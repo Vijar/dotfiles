@@ -20,12 +20,12 @@ alias cdb='cd -'
 
 # Show human friendly numbers and colors
 alias df='df -h'
-alias ll='ls -alGh'
+alias l='ls -alGh'
 alias ls='ls -Gh'
 alias du='du -h -d 2'
 
 # show me files matching "ls grep"
-alias lsg='ll | grep'
+alias lsg='l | grep'
 
 # Alias Editing
 alias ae='vim $yadr/zsh/aliases.zsh' #alias edit
@@ -105,13 +105,13 @@ alias gbb='git bisect bad'
 # Common shell functions
 alias less='less -r'
 alias tf='tail -f'
-alias l='less'
 alias lh='ls -alt | head' # see the last modified files
 alias screen='TERM=screen screen'
 alias cl='clear'
 
 # Zippin
 alias gz='tar -zcvf'
+alias gzx='tar -zxvf'
 
 # Ruby
 alias c='rails c' # Rails 3
@@ -154,3 +154,6 @@ alias srdmt='spring rake db:migrate db:test:prepare'
 alias sp='sprintly'
 # spb = sprintly branch - create a branch automatically based on the bug you're working on
 alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A-Za-z0-9 ]//g' | sed 's/ /-/g' | cut -d"-" -f1,2,3,4,5\`"
+
+# ynpm
+alias npm='ynpm'
