@@ -327,6 +327,7 @@ def file_operation(files, method = :symlink)
     if file == 'zshrc'
       File.open(target, 'a') do |zshrc|
         zshrc.puts('for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file')
+        zshrc.puts('eval `dircolors ${ZDOTDIR:-$HOME}/.yadr/zsh/dircolors-solarized/dircolors.256dark`')
       end
     end
 
