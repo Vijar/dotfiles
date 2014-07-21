@@ -157,3 +157,14 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 
 # ynpm
 alias npm='ynpm'
+
+# vi
+alias vi='vim'
+
+# node
+# json
+alias tojson='node -e "console.log(JSON.stringify(JSON.parse(process.argv[1]), null, 4));"'
+
+#Finder
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
