@@ -25,18 +25,19 @@ alias psg="ps aux | grep "
 alias psr='ps aux | grep ruby'
 
 # Moving around
-alias cdb='cd -'
+alias cdv='cd -'
 alias cls='clear;ls'
 
 # Show human friendly numbers and colors
 alias df='df -h'
 alias du='du -h -d 2'
 
+alias l='ls -al'
 if [[ $platform == 'linux' ]]; then
   alias ll='ls -alh --color=auto'
   alias ls='ls --color=auto'
 elif [[ $platform == 'darwin' ]]; then
-  alias ll='ls -alGh'
+  alias ls='ls -alGh'
   alias ls='ls -Gh'
 fi
 
@@ -57,16 +58,17 @@ mvim --version > /dev/null 2>&1
 MACVIM_INSTALLED=$?
 if [ $MACVIM_INSTALLED -eq 0 ]; then
   alias vim="mvim -v"
+  alias vi="mvim -v"
 fi
-
-# mimic vim functions
-alias :q='exit'
 
 # vimrc editing
 alias ve='vim ~/.vimrc'
 
 # zsh profile editing
 alias ze='vim ~/.zshrc'
+
+#Ag
+alias agg='ag --ignore-dir dist'
 
 # Git Aliases
 alias gs='git status'
@@ -81,7 +83,6 @@ alias gi='vim .gitignore'
 alias gcm='git ci -m'
 alias gcim='git ci -m'
 alias gci='git ci'
-alias gco='git co'
 alias gcp='git cp'
 alias ga='git add -A'
 alias gap='git add -p'
@@ -101,6 +102,9 @@ alias gl='git l'
 alias glg='git l'
 alias glog='git l'
 alias co='git co'
+alias go='git co'
+alias gc='git co'
+alias gcv='git co -'
 alias gf='git fetch'
 alias gfp='git fetch --prune'
 alias gfa='git fetch --all'
@@ -119,6 +123,7 @@ alias gplr='git pull --rebase'
 alias gps='git push'
 alias gpsh='git push -u origin `git rev-parse --abbrev-ref HEAD`'
 alias gnb='git nb' # new branch aka checkout -b
+alias gcb='git nb' # new branch aka checkout -b
 alias grs='git reset'
 alias grsh='git reset --hard'
 alias gcln='git clean'
@@ -135,7 +140,7 @@ alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 # Common shell functions
 alias less='less -r'
 alias tf='tail -f'
-alias l='less'
+alias le='less'
 alias lh='ls -alt | head' # see the last modified files
 alias screen='TERM=screen screen'
 alias cl='clear'

@@ -1,0 +1,62 @@
+#
+# A theme based on steeef theme
+#  * RVM/Rbenv info shown on the right
+#  * Git branch info on the left
+#  * Single line prompt
+#
+# Authors:
+#   Steve Losh <steve@stevelosh.com>
+#   Bart Trojanowski <bart@jukie.net>
+#   Brian Carper <brian@carper.ca>
+#   steeef <steeef@gmail.com>
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Yan Pritzker <yan@pritzker.ws>
+
+
+function prompt_rajiv_precmd {
+  unset rajiv_info
+  typeset -gA rajiv_info
+  if git rev-parse --git-dir > /dev/null 2>&1;
+  then
+    rajiv_info[branch]=$(git symbolic-ref --short HEAD)
+  fi
+}
+
+function prompt_rajiv_setup {
+  setopt LOCAL_OPTIONS
+  setopt PROMPT_SUBST
+
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_rajiv_precmd
+
+  # Use extended color pallete if available.
+  if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+    __prompt_rajiv_colors=(
+      "%F{81}"  # turquoise
+      "%F{166}" # orange
+      "%F{135}" # purple
+      "%F{161}" # hotpink
+      "%F{118}" # limegreen
+    )
+  else
+    __prompt_rajiv_colors=(
+      "%F{cyan}"
+      "%F{yellow}"
+      "%F{magenta}"
+      "%F{red}"
+      "%F{green}"
+    )
+  fi
+
+  branch='(${__prompt_rajiv_colors[1]}$rajiv_info[branch]%f)'
+
+  PROMPT="${__prompt_rajiv_colors[3]}%n%f@${__prompt_rajiv_colors[2]}%m%f ${__prompt_rajiv_colors[5]}%~%f $branch$ "
+}
+
+prompt_rajiv_setup "$@"
